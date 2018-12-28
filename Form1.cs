@@ -18,6 +18,7 @@ namespace Chat_Client_App
     {
         Socket sck;
         EndPoint epLocal, epRemote;
+        Boolean show_flag = false;
         public Form1()
         {
             InitializeComponent();
@@ -50,6 +51,13 @@ namespace Chat_Client_App
         {
             try
             {
+                if(show_flag == false)
+                {
+                    string str1 = sck.RemoteEndPoint.ToString();
+                    //MessageBox.Show(str1);
+                    listMessage.Items.Add("RemoteEndPoint: " + str1);
+                    show_flag = true;
+                }
                 int size = sck.EndReceiveFrom(aResult, ref epRemote);
                 if (size > 0)
                 {
