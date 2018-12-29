@@ -137,6 +137,23 @@ namespace Chat_Client_App
 
         }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                sck.Disconnect(true);
+                if (sck.Connected)
+                    listMessage.Items.Add("We're still connnected");
+                else
+                    listMessage.Items.Add("We're disconnected");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+
+            }
+        }
+
         private void button2_Click(object sender, EventArgs e)//Send 
         {
             try
